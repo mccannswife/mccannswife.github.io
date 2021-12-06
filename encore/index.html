@@ -16,6 +16,7 @@
             }
             .timer-display {
                 font-size: 200px;
+                font-family: 'arial';
             }
             .button {
                 background-color: #00cc81; /* Green */
@@ -25,12 +26,15 @@
                 text-align: center;
                 text-decoration: none;
                 display: inline-block;
-                font-size: 16px;
+                font-size: 24px;
                 margin: 4px 2px;
                 cursor: pointer;
             }
             .button5 {
                 border-radius: 50%;
+            }
+            .the-word-class {
+                font-size: 60px;
             }
         </style>
     </head>
@@ -38,7 +42,7 @@
         <img id="encore-img-div" src="http://cdn.shopify.com/s/files/1/1737/6965/products/71DqMMHIV_2BL._AC_SL1500.jpg?v=1594593752" style="max-width: 100%; max-height: 500px;" />
         <div id="game-over" style="display: none;"><h1>GAME OVER</h1></div>
         <div id="the-game">
-            <h1 id="the-word"></h1>
+            <h1 id="the-word" class="the-word-class"></h1>
             <div id="counter-div">
                 <h1 id="teams-turn"></h1>
                 <p id="demo" class="timer-display"></p>
@@ -137,4 +141,3 @@
         </script>
     </body>
 </html>
-
