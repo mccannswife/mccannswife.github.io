@@ -10,16 +10,14 @@
             * {
                 font-family: 'Mountains of Christmas';
             }
-            p {
-                text-align: center;
-                margin: 60px;
-            }
             .timer-display {
                 font-size: 200px;
                 font-family: 'arial';
+                text-align: center;
+                margin: 80px;
             }
             .button {
-                background-color: #00cc81; /* Green */
+                background-color: #008c59; /* Green */
                 border: none;
                 color: white;
                 padding: 20px;
@@ -34,13 +32,20 @@
                 border-radius: 50%;
             }
             .the-word-class {
-                font-size: 60px;
+                font-size: 80px;
+            }
+            .team-class {
+            margin: 0;
+            font-size: 50px;
+            }
+            #game-over {
+            font-size: 100px;
             }
         </style>
     </head>
     <body style="text-align: center;">
         <img id="encore-img-div" src="http://cdn.shopify.com/s/files/1/1737/6965/products/71DqMMHIV_2BL._AC_SL1500.jpg?v=1594593752" style="max-width: 100%; max-height: 500px;" />
-        <div id="game-over" style="display: none;"><h1>GAME OVER</h1></div>
+        <div id="game-over" style="display: none;"><p>GAME OVER</p></div>
         <div id="the-game">
             <h1 id="the-word" class="the-word-class"></h1>
             <div id="counter-div">
@@ -54,13 +59,13 @@
     justify-content: space-evenly;">
     <div style="display: flex;
     flex-direction: column;padding: 10px;" id="team-1-column">
-            <h2 style="margin: 0;">Team 1</h2>
-            <h2 style="margin: 0;" id="team-1-points"></h2>
+            <p class="team-class">Team 1</p>
+            <p class="team-class" id="team-1-points"></p>
             </div>
     <div style="display: flex;
     flex-direction: column; padding: 10px;" id="team-2-column">
-    <h2 style="margin: 0;">Team 2</h2> 
-            <h2 style="margin: 0;" id="team-2-points"></h2>
+    <p class="team-class">Team 2</p> 
+            <p class="team-class" id="team-2-points"></p>
             </div>
         </div>
         <script>
@@ -68,13 +73,15 @@
             var x;
             var currentTeam = 1;
             var currentWord;
-            var allwords = ["Tree","Mistletoe","Angel","Snow","Christmas","Snowman","Bell","Star","Santa","Baby"];
+            var allwords = ["Tree","Angel","Snow","Christmas","Bell","Santa","Baby"];
             var team1points = 0;
             var team2points = 0;
-            var timerAmount = 30;
+            var timerAmount = 20;
             var timerEvery = 1000; //ms
+            timerAmount += 1;
 
             function countDown() {
+                secondsLeft -= 1;
                 document.getElementById("demo").innerHTML = secondsLeft;
                 document.getElementById("demo").style.color = 'black';
                 // If the count down is over, write some text
@@ -92,7 +99,6 @@
                     }
                     updateTeamPoints();
                 } else {
-                    secondsLeft -= 1;
                     document.getElementById("counter-div").style.backgroundColor = "white";
                 }
             }
