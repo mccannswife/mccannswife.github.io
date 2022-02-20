@@ -1,111 +1,149 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-* {
- font-family: Arial;
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link href='https://fonts.googleapis.com/css?family=Mountains of Christmas' rel='stylesheet'>
+        <style>
+                .myturn {
+  border: 15px solid gray;
 }
-p {
-  text-align: center;
-  font-size: 60px;
-  margin-top: 0px;
-}
-.button {
-  background-color: #00cc81; /* Green */
-  border: none;
-  color: white;
-  padding: 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-}
-.button5 {border-radius: 50%;}
-</style>
-</head>
-<body style="text-align:center">
-<img id="encore-img-div" src="http://cdn.shopify.com/s/files/1/1737/6965/products/71DqMMHIV_2BL._AC_SL1500.jpg?v=1594593752" style="max-width: 100%; max-height: 500px">
-<div id="game-over" style="display: none"><h1>GAME OVER</h1></div>
-<div id="the-game">
-<h1 id="the-word"></h1>
-<div id="counter-div">
-<h1 id="teams-turn"></h1>
-<p id="demo"></p>
-</div>
-<button id="reset-button" class="button button5" onclick="resetTime()">Start</button>
-</div>
-<div>
-<h2 id="team-1-points"></h2>
-<h2 id="team-2-points"></h2>
-</div>
-<script>
-var secondsLeft = 0;
-var x;
-var currentTeam = 1;
-var currentWord;
-var allwords = ['kathy','is','hot'];
-var team1points = 0;
-var team2points = 0;
-var timerAmount = 3;
-var timerEvery = 1000;//ms
+            * {
+                font-family: 'Mountains of Christmas';
+            }
+            .timer-display {
+                font-size: 200px;
+                font-family: 'arial';
+                text-align: center;
+                margin: 80px;
+            }
+            .button {
+                background-color: #008c59; /* Green */
+                border: none;
+                color: white;
+                padding: 20px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 24px;
+                margin: 4px 2px;
+                cursor: pointer;
+            }
+            .button5 {
+                border-radius: 50%;
+            }
+            .the-word-class {
+                font-size: 80px;
+            }
+            .team-class {
+            margin: 0;
+            font-size: 50px;
+            }
+            #game-over {
+            font-size: 100px;
+            }
+        </style>
+    </head>
+    <body style="text-align: center;">
+        <img id="encore-img-div" src="http://cdn.shopify.com/s/files/1/1737/6965/products/71DqMMHIV_2BL._AC_SL1500.jpg?v=1594593752" style="max-width: 100%; max-height: 500px;" />
+        <div id="game-over" style="display: none;"><p>GAME OVER</p></div>
+        <div id="the-game">
+            <h1 id="the-word" class="the-word-class"></h1>
+            <div id="counter-div">
+                <h1 id="teams-turn"></h1>
+                <p id="demo" class="timer-display"></p>
+            </div>
+            <button id="reset-button" class="button button5" onclick="resetTime()">Start</button>
+        </div>
+        <div style="display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;">
+    <div style="display: flex;
+    flex-direction: column;padding: 10px;" id="team-1-column">
+            <p class="team-class">Team 1</p>
+            <p class="team-class" id="team-1-points"></p>
+            </div>
+    <div style="display: flex;
+    flex-direction: column; padding: 10px;" id="team-2-column">
+    <p class="team-class">Team 2</p> 
+            <p class="team-class" id="team-2-points"></p>
+            </div>
+        </div>
+        <script>
+            var secondsLeft = 0;
+            var x;
+            var currentTeam = 1;
+            var currentWord;
+            var allwords = ["Tree","Snow","Christmas","Bell","Santa","Baby"];
+            var team1points = 0;
+            var team2points = 0;
+            var timerAmount = 20;
+            var timerEvery = 1000; //ms
+            timerAmount += 1;
 
-function countDown() {
-document.getElementById("demo").innerHTML = secondsLeft;
-  // If the count down is over, write some text 
-  if (secondsLeft <= 0) {
-    document.getElementById("counter-div").style.backgroundColor='#cc004b';
-    clearInterval(x);
-    // end round
-    document.getElementById("reset-button").innerHTML = "Reset Round";
-    if (currentTeam == 1) {
-    	team2points += 1;
-    } else {
-    	team1points += 1;
-    }
-        updateTeamPoints();
-  } else {
-  secondsLeft -= 1;
-    document.getElementById("counter-div").style.backgroundColor='white';
-    }
-}
+            function countDown() {
+                secondsLeft -= 1;
+                document.getElementById("demo").innerHTML = secondsLeft;
+                document.getElementById("demo").style.color = 'black';
+                // If the count down is over, write some text
+                if (secondsLeft <= 0) {
+                    // document.getElementById("counter-div").style.backgroundColor = "#cc004b";
+                    
+                document.getElementById("demo").style.color = "#cc004b";
+                    clearInterval(x);
+                    // end round
+                    document.getElementById("reset-button").innerHTML = "Reset Round";
+                    if (currentTeam == 1) {
+                        team2points += 1;
+                    } else {
+                        team1points += 1;
+                    }
+                    updateTeamPoints();
+                } else {
+                    document.getElementById("counter-div").style.backgroundColor = "white";
+                }
+            }
 
-function resetTime() {
-document.getElementById("encore-img-div").style.display = "none";
-	if (secondsLeft <= 0)
-    {
-    console.log("current word= "+currentWord);
-    	var nextIndex = allwords.findIndex(b=>b == currentWord) + 1;
-console.log("nextIndex = "+nextIndex);
-        if (nextIndex >= allwords.length) {
-document.getElementById("the-game").style.display = "none";
-document.getElementById("game-over").style.display = "unset";
-console.log("GAME OVER");
-        } else {
-        	currentWord = allwords[nextIndex];
-    document.getElementById("the-word").innerHTML = "The word is: "+currentWord;
-    document.getElementById("reset-button").innerHTML = "Reset Time";
-        }
-    }
-    document.getElementById("counter-div").style.backgroundColor='#00cc81';
-    currentTeam = currentTeam + 1;
-    if (currentTeam > 2) {
-    	currentTeam = 1;
-    }
-secondsLeft = timerAmount;
-    clearInterval(x);
-    x = setInterval(countDown,timerEvery);
-    document.getElementById("teams-turn").innerHTML = "Team's Turn: Team "+currentTeam;
-}
+            function resetTime() {
+                document.getElementById("encore-img-div").style.display = "none";
+                if (secondsLeft <= 0) {
+                    console.log("current word= " + currentWord);
+                    var nextIndex = allwords.findIndex((b) => b == currentWord) + 1;
+                    console.log("nextIndex = " + nextIndex);
+                    if (nextIndex >= allwords.length) {
+                        document.getElementById("the-game").style.display = "none";
+                        document.getElementById("game-over").style.display = "unset";
+                        console.log("GAME OVER");
+                    } else {
+                        currentWord = allwords[nextIndex];
+                        document.getElementById("the-word").innerHTML = "" + currentWord;
+                        document.getElementById("reset-button").innerHTML = "Reset Time";
+                    }
+                }
+                // document.getElementById("counter-div").style.backgroundColor = "#00cc81";
+                
+                document.getElementById("demo").style.color = "#00cc81";
+                currentTeam = currentTeam + 1;
+                if (currentTeam > 2) {
+                    currentTeam = 1;
+                }
+                secondsLeft = timerAmount;
+                clearInterval(x);
+                x = setInterval(countDown, timerEvery);
+                // document.getElementById("teams-turn").innerHTML = "Team's Turn: Team " + currentTeam;
+                if (currentTeam == 1) {
+                document.getElementById("team-1-column").classList.add("myturn");
+                document.getElementById("team-2-column").classList.remove("myturn");
+                } else {
+                document.getElementById("team-1-column").classList.remove("myturn");
+                document.getElementById("team-2-column").classList.add("myturn");
+                }
+            }
 
-function updateTeamPoints() {
-    document.getElementById("team-1-points").innerHTML = "Team 1 points: "+team1points;
-    document.getElementById("team-2-points").innerHTML = "Team 2 points: "+team2points;
-}
-updateTeamPoints();
-</script>
-
-</body>
+            function updateTeamPoints() {
+                document.getElementById("team-1-points").innerHTML = "" + team1points;
+                document.getElementById("team-2-points").innerHTML = "" + team2points;
+            }
+            updateTeamPoints();
+        </script>
+    </body>
 </html>
