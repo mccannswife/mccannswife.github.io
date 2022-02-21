@@ -1,0 +1,8 @@
+# HTTrack Website Copier Cookie File
+# This file format is compatible with Netscape cookies
+lakathybill.wixsite.com	TRUE	/kathybill	FALSE	1999999999	svSession	bb57b15fb0103b7ba4e18a73c571d464d66cc5db7d6bf040aead329671e783f6167a5020d10472e3d54ddae93f5467541e60994d53964e647acf431e4f798bcd97573cbeea9bff54e73fa228ccc4c5b59a56f9d21c39d45ae72393737bf7ee0673ab7d82b499dedff6370b9797a2aa3a9b605da08c96ed56fc49e86f54ea5ea9f7f9f5bf1a28f8686d84d82e8e7182d4
+lakathybill.wixsite.com	TRUE	/	FALSE	1999999999	XSRF-TOKEN	1645413578|dC3jPTx7jOSw
+lakathybill.wixsite.com	TRUE	/	FALSE	1999999999	hs	1745948220
+lakathybill.wixsite.com	TRUE	/	FALSE	1999999999	SameSite	None
+lakathybill.wixsite.com	TRUE	/	FALSE	1999999999	ssr-caching	cache#desc=hit#varnish=hit#dc#desc=usc1
+
